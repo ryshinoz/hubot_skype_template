@@ -104,3 +104,15 @@ bash "easy_install Skype4Py" do
 easy_install Skype4Py
 EOH
 end
+
+# nodejs
+
+%w(nodejs npm).each do |pkg|
+  package pkg do
+    action :install
+  end
+end
+
+execute "install hubot" do
+  command "npm install -g -y hubot coffee-script"
+end
